@@ -8,7 +8,7 @@ const add = document.getElementById('add-button');
 const list = document.getElementById('list');
 
 add.addEventListener('click', () => {
- 
+  const title = document.getElementById('title');
   const author = document.getElementById('author');
   const book = new myBook.Info(title.value, author.value);
   myBook.awesomBook.push(book);

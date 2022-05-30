@@ -8,7 +8,7 @@ export class Info {
 }
 export const createBook = () => {
   const title = document.getElementById('title');
-
+  const author = document.getElementById('author');
   const liTitle = document.createElement('li');
   const liAuthor = document.createElement('li');
   const removeBotton = document.createElement('button');
