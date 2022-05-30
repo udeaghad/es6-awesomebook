@@ -7,5 +7,5 @@ const linksAdd = document.querySelector('.links-add');
 const linksContact = document.querySelector('.links-contact');
 
 export {
-  allSection, inputSection, contactSection, copyRight, linksAll, linksAdd, linksContact,
+  inputSection, contactSection, copyRight, linksAll, linksAdd, linksContact,
 };
