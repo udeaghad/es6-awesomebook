@@ -1,4 +1,3 @@
-const list = document.getElementById('list');
 export const awesomBook = [];
 export class Info {
   constructor(title, author) {
@@ -6,29 +5,22 @@ export class Info {
     this.author = author;
   }
 }
-export const createBook = () => {
-  const title = document.getElementById('title');
-  const author = document.getElementById('author');
-  const liTitle = document.createElement('li');
-  const liAuthor = document.createElement('li');
-  const removeBotton = document.createElement('button');
-  const by = document.createElement('p');
-  const newDiv = document.createElement('div');
+export const showBook = () => {
+  const bookStorage = JSON.parse(localStorage.getItem('awesomBook'));
+  if (awesomBook.length > 0 || bookStorage.length > 0) {
+    const divList = document.getElementById('list');
 
-  newDiv.classList.add('onebook');
-  for (let i = 0; i < awesomBook.length; i += 1) {
-    newDiv.classList.toggle('removebg');
+    for (let i = 0; i < bookStorage.length; i += 1) {
+      const newDiv = document.createElement('div');
+      newDiv.classList.add('onebook');
+
+      newDiv.innerHTML = `
+       <p class="title-pe">${bookStorage[i].title}</p> 
+       <p>by</p>
+       <p class="title-pe">${bookStorage[i].author}</p>
+       <button type="submit" class="remove">remove</button>`;
+
+      divList.appendChild(newDiv);
+    }
   }
-
-  by.innerHTML = 'by';
-  removeBotton.classList = 'remove';
-  liTitle.className = 'title-pe';
-  liAuthor.className = 'title-pe';
-  liTitle.innerHTML = title.value;
-  liAuthor.innerHTML = author.value;
-  removeBotton.innerText = 'Remove';
-  newDiv.append(liTitle, by, liAuthor, removeBotton);
-  list.appendChild(newDiv);
 };
-
-// const book = new myBook.Info(title.value, author.value);

@@ -4,6 +4,8 @@ import { DateTime } from './node_modules/luxon/build/es6/luxon.js';
 
 import * as links from './modules/interraction.js';
 
+myBook.showBook();
+
 const add = document.getElementById('add-button');
 const list = document.getElementById('list');
 
@@ -12,8 +14,21 @@ add.addEventListener('click', () => {
   const author = document.getElementById('author');
   const book = new myBook.Info(title.value, author.value);
   myBook.awesomBook.push(book);
-  myBook.createBook(book);
+
   localStorage.setItem('awesomBook', JSON.stringify(myBook.awesomBook));
+
+  const divList = document.getElementById('list');
+
+  const newDiv = document.createElement('div');
+  newDiv.classList.add('onebook');
+
+  newDiv.innerHTML = `
+       <p class="title-pe">${title.value}</p> 
+       <p>by</p>
+       <p class="title-pe">${author.value}</p>
+       <button type="submit" class="remove">remove</button>`;
+
+  divList.appendChild(newDiv);
 
   title.value = '';
   author.value = '';
@@ -32,6 +47,7 @@ list.addEventListener('click', (e) => {
     localStorage.setItem('awesomBook', JSON.stringify(myBook.awesomBook));
   }
 });
+
 document.querySelector('.time').innerHTML = DateTime.now().toLocaleString(DateTime.DATETIME_MED);
 
 const listLink = document.querySelector('.list-link');
